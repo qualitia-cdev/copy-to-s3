@@ -1,0 +1,48 @@
+name: "Copy package to S3 on AWS"
+description: "Copy package to S3 on AWS"
+
+inputs:
+    aws-access-key:
+        description: "AWS ACCESS KEY"
+        required: true
+        default: ""
+
+    aws-secret-access-key:
+        description: "AWS SECRET KEY"
+        required: true
+        default: ""
+
+    aws-region:
+        description: "Region where you want to deploy"
+        required: true
+        default: "ap-northeast-1"
+
+    source-dir:
+        description: "This is used for copying target source file"
+        required: true
+        default: ""
+
+    service-name:
+        description: "This is service name"
+        required: true
+        default: ""
+
+    target-dir:
+        description: "The directory which is deployed"
+        required: true
+        default: ""
+
+outputs:
+    result:
+        description: "Show the result of deploying"
+
+runs:
+    using: "docker"
+    image: "Dockerfile"
+    args:
+        - ${{ inputs.aws-access-key }}
+        - ${{ inputs.aws-secret-access-key }}
+        - ${{ inputs.aws-region }}
+        - ${{ inputs.source-dir }}
+        - ${{ inputs.service-name }}
+        - ${{ inputs.target-dir }}
