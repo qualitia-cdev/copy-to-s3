@@ -28,4 +28,6 @@ echo "[Start copying ${SOURCE_DIR} to ${s3_dir}]"
 
 aws s3 cp ${SOURCE_DIR} ${s3_dir} --recursive
 
+echo "::set-output name=s3dir::$s3_dir"
+
 echo "Complete!!"

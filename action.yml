@@ -35,6 +35,8 @@ inputs:
 outputs:
     result:
         description: "Show the result of deploying"
+    s3dir:
+        description: "S3 directory to be put"
 
 runs:
     using: "docker"
